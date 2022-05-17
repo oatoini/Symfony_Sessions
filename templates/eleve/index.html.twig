@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EleveController!{% endblock %}
+
+{% block body %}
+<h1>Liste des élèves</h1>
+
+<a href="{{ path('add_eleve') }}">Ajouter un élève</a>
+
+<p>Il y a {{ eleves | length }} élèves : </p>
+{% for eleve in eleves %}
+    <a href="{{ path('show_eleve', {'id': eleve.id}) }}"> {{ eleve }} </a> <br>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sessions{% endblock %}
+
+{% block body %}
+<h1>Liste des sessions </h1>
+
+<a href="{{ path('add_session') }}">Ajouter une session</a>
+
+<p> Il existe {{ sessions | length }} sessions disponibles : </p><br>
+{% for session in sessions %}
+    <a href="{{ path('show_session', {'id': session.id}) }}">{{ session }}</a><br>
+{% endfor %}
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'une session{% endblock %}
+
+{% block body %}
+
+<h1>{{ session }}</h1>
+
+<p>
+    Nom : {{ session.nom }} <br>
+    Date de Début : {{ session.dateDebut | date('d/m/Y')}} <br>
+    Date de Fin : {{ session.dateFin | date('d/m/Y') }} <br>
+    Capacité : {{ session.capacite }} <br>
+</p>
+
+<h3>Cours programmés</h3>
+
+{% for programme in session.programmes %}
+    {{ programme.cours ~ ' ' ~ programme.duree ~ ' jours (' ~ programme.cours.categorie ~ ')' }} <br>
+{% endfor %}
+
+<h3>Stagiaires inscrits</h3>
+
+{% for eleve in session.eleve %}
+    {{ eleve }} <br>
+{% endfor %}
+
+{% endblock %}

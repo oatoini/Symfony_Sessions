@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un élève{% endblock %}
+
+{% block body %}
+
+<h1>{{eleve}}</h1>
+    <p>
+        Nom : {{eleve.nom | upper }}<br>
+        Prenom :  {{eleve.prenom}}<br>
+        Session :  {% for session in eleve.sessions %}
+                        {{session.nom}} <br>
+                    {% endfor %}
+        
+    </p>
+
+{% endblock %}

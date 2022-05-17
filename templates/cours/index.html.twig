@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CoursController!{% endblock %}
+
+{% block body %}
+<h1>Liste des cours</h1>
+{% for cours in cours %}
+    {{ cours }}<br>
+{% endfor %}
+{% endblock %}
