@@ -13,8 +13,7 @@ class CoursController extends AbstractController
     /**
      * @Route("/cours", name="app_cours")
      */
-    public function index(ManagerRegistry $doctrine): Response
-    {
+    public function index(ManagerRegistry $doctrine): Response{
         $cours = $doctrine->getRepository(Cours::class)->findAll();
 
         return $this->render('cours/index.html.twig', [

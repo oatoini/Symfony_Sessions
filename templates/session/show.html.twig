@@ -4,25 +4,31 @@
 
 {% block body %}
 
-<h1>{{ session }}</h1>
+<h2 class="p-2 mb-2 bg-secondary text-white">{{ session }}</h2>
 
 <p>
     Nom : {{ session.nom }} <br>
     Date de Début : {{ session.dateDebut | date('d/m/Y')}} <br>
     Date de Fin : {{ session.dateFin | date('d/m/Y') }} <br>
     Capacité : {{ session.capacite }} <br>
+<h4>Places restantes :
+
+    <span class="badge bg-dark text-white">{{ session.capacite - session.eleve | length }}</span>
+
+</h4> 
+
 </p>
 
-<h3>Cours programmés</h3>
+<h3 class="p-2 mb-2 bg-secondary text-white">Cours programmés</h3>
 
 {% for programme in session.programmes %}
     {{ programme.cours ~ ' ' ~ programme.duree ~ ' jours (' ~ programme.cours.categorie ~ ')' }} <br>
-{% endfor %}
+{% endfor %} <br>
 
-<h3>Stagiaires inscrits</h3>
+<h3 class="p-2 mb-2 bg-secondary text-white">Stagiaires inscrits</h3>
 
 {% for eleve in session.eleve %}
-    {{ eleve }} <br>
-{% endfor %}
+  <a href="{{ path('show_eleve', {'id': eleve.id}) }}" class="text-primary"> {{ eleve }}</a><br>
+{% endfor %} <br>
 
 {% endblock %}

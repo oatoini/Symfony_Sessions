@@ -29,6 +29,7 @@ class EleveController extends AbstractController
 
     /**
      * @Route("/eleve/add", name="add_eleve")
+     *  @Route("/eleve/update/{id}", name="update_eleve")
      */
 
     public function add(ManagerRegistry $doctrine, Eleve $eleve = null, Request $request): Response {
@@ -62,8 +63,10 @@ class EleveController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $eleve = $form->getData();
-            $entityManager->persist($eleve);
+            $eleve = $form->get("eleves")->getData();
+            $session = $form->get("sessions")->getData();
+            $session->addEleve($eleve);
+            $entityManager->persist($session);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_eleve');
@@ -82,5 +85,15 @@ class EleveController extends AbstractController
         return $this->render('eleve/show.html.twig', [
             'eleve' => $eleve
         ]);
+    }
+
+    /**
+     * @Route("/eleve/delete/{id}", name="delete_eleve")
+     */
+    public function delete(ManagerRegistry $doctrine, Eleve $eleve){
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($eleve);
+        $entityManager->flush();
+        return $this->redirectToRoute("app_eleve");
     }
 }

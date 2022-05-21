@@ -24,7 +24,9 @@ class InscriptionType extends AbstractType
                 'choice_label' => 'nomprenom'
             ])
             
-            ->add('valider', SubmitType::class)
+            ->add('valider', SubmitType::class , [
+                'attr' => ['class'=>'btn btn-secondary']
+            ])
         ;
     }
 

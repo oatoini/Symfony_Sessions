@@ -16,7 +16,9 @@ class EleveType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('valider', SubmitType::class)
+            ->add('valider', SubmitType::class , [
+                'attr' => ['class'=>'btn btn-secondary']
+            ])
         ;
     }
 

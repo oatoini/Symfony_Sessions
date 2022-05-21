@@ -1,10 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategorieController!{% endblock %}
+{% block title %}Categorie{% endblock %}
 
 {% block body %}
-<h1>Liste des categories</h1>
-{% for categorie in categories %}
-    {{ categorie }}<br>
-{% endfor %}
+<h2 class="p-2 mb-2 bg-secondary text-white">Liste des categories</h2>
+<div class="table-responsive-sm">
+            <table class="table table-bordered">
+               <thead>
+                  <tr>
+                     <th>Catégorie</th>
+                  </tr>
+               </thead>
+               {% for categorie in categories %} 
+               <tbody>
+                  <tr>  
+                     <td> <a href="{{ path('show_categorie', {'id': categorie.id}) }}" class="text-secondary">{{ categorie }} </a></td><br>
+                  </tr>
+               </tbody>
+               {% endfor %}
+            </table>
+         </div>
 {% endblock %}

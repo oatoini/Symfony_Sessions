@@ -3,13 +3,19 @@
 {% block title %}Sessions{% endblock %}
 
 {% block body %}
-<h1>Liste des sessions </h1>
+<h2 class="p-2 mb-2 bg-secondary text-white">Liste des sessions </h2>
 
-<a href="{{ path('add_session') }}">Ajouter une session</a>
 
-<p> Il existe {{ sessions | length }} sessions disponibles : </p><br>
+
+<h3><br><a href="{{ path('add_session') }}" class="text-secondary">Ajouter une session</a><br></h3>
+
+<br><p> Il existe {{ sessions | length }} sessions disponibles : </p>
 {% for session in sessions %}
-    <a href="{{ path('show_session', {'id': session.id}) }}">{{ session }}</a><br>
+    <a href="{{ path('show_session', {'id': session.id}) }}" class="text-secondary">{{ session }}</a>
+    <a href="{{ path('delete_session', {'id': session.id}) }}" class="text-danger"> Supprimer</a>
+    <a href="{{ path('update_session', {'id': session.id}) }}" class="text-primary"> Editer</a><br>
 {% endfor %}
+
+
 {% endblock %}
 

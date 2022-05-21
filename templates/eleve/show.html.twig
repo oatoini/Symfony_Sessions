@@ -4,14 +4,27 @@
 
 {% block body %}
 
+<h2 class="p-2 mb-2 bg-secondary text-white"> Détail d'un élève</h2>
+<div class="container-fluid">
 <h1>{{eleve}}</h1>
-    <p>
-        Nom : {{eleve.nom | upper }}<br>
-        Prenom :  {{eleve.prenom}}<br>
-        Session :  {% for session in eleve.sessions %}
-                        {{session.nom}} <br>
-                    {% endfor %}
-        
-    </p>
+<div class="table-responsive-sm">
+            <table class="table table-bordered">
+               <thead>
+                  <tr>
+                     <th>Nom</th>
+                     <th>Prenom</th>
+                     <th>Session</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>{{eleve.nom | upper }}</td>
+                     <td>{{eleve.prenom}}</td>
+                     <td>{% for session in eleve.sessions %} <a href="{{ path('show_session', {'id': session.id}) }}" class="text-primary"> {{session.nom}} </a><br>
+                     {% endfor %}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
 
 {% endblock %}

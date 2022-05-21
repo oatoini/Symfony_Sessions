@@ -3,12 +3,15 @@
 {% block title %}Hello EleveController!{% endblock %}
 
 {% block body %}
-<h1>Liste des élèves</h1>
+<h2 class="p-2 mb-2 bg-secondary text-white">Liste des élèves</h2>
 
-<a href="{{ path('add_eleve') }}">Ajouter un élève</a>
+<h3><br><a href="{{ path('add_eleve') }}" class="text-secondary">Ajouter un élève</a><br></h3>
 
-<p>Il y a {{ eleves | length }} élèves : </p>
+<br><p>Il y a {{ eleves | length }} élèves : </p>
 {% for eleve in eleves %}
-    <a href="{{ path('show_eleve', {'id': eleve.id}) }}"> {{ eleve }} </a> <br>
+    <a href="{{ path('show_eleve', {'id': eleve.id}) }}" class="text-secondary"> {{ eleve }} </a>
+    <a href="{{ path('delete_eleve', {'id': eleve.id}) }}" class="text-danger"> Supprimer</a>
+    <a href="{{ path('update_eleve', {'id': eleve.id}) }}" class="text-primary"> Editer</a><br>
 {% endfor %}
 {% endblock %}
+

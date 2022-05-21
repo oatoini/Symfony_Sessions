@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'une catégorie{% endblock %}
+
+{% block body %}
+
+<h2 class="p-2 mb-2 bg-secondary text-white"> Détail d'une catégorie</h2>
+<div class="container-fluid">
+<h1>{{categorie}}</h1>
+<div class="table-responsive-sm">
+            <table class="table table-bordered">
+               <thead>
+                  <tr>
+                     <th>Cours</th>
+                  </tr>
+               </thead>
+               <tbody>
+                {% for cours in categorie.cours %}
+                  <tr>
+                     <td>{{ cours }}</td>
+                  </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+         </div>
+
+{% endblock %}
